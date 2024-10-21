@@ -23,60 +23,42 @@ java Main.java
 
 After you compile the shape classes, you only need to compile and run `Main.java` as usual.
 
-## Problem 1
-Write code that takes input from the user for the radius (double) of a circle, and create a circle with that radius. The program should then print a sentence with the circumference and area of the circle. You should use the appropriate `Circle` methods to obtain the circumference and area of the circle rather than calculating these values yourself.
+# Instructions  
 
-Sample run:
-```
-Enter the radius of the circle:
-> 3
-A circle with a radius of 3.0 has a circumference of 18.84955592153876 and an area of 28.274333882308138
-```
-Hint: You can approach this problem by saving the double (radius) as a variable and then creating the Circle, or you can create the Circle and use methods from the Circle class to set the radius.
+For any of these questions, you are NOT writing if-statements.  You should only be making boolean variables, and creating boolean expressions using the relational and logical operators.  Find the documentation for the Circle, Rectangle, and RegularPolygon class at this link.
 
-## Problem 2
-Write code that takes an integer input and a double input from the user, and creates a `RegularPolygon` object where the integer is the number of sides and the double is the side length. The code should calculate the area of the `RegularPolygon`, print the area, then increment the number of sides of the `RegularPolygon` by two and print the new area.
+[Shapes API](https://coderunner.projectstem.org/docs/shapes/index.html?_ga=2.85318812.489019979.1697552509-1811407564.1697552446)
 
-Sample run:
-```
-Enter number of sides:
-> 4
-Enter the side length:
-> 5.6
-Area with 4 sides: 31.36
-Incrementing the number of sides by two
-Area with 6 sides: 81.47566998803998
-```
-Hint: You can use either the `addSides` or `setNumSides` methods from the `RegularPolygon` class to increment the number of sides by 2.
+## Problem
+Create two `Rectangle` objects (you can either hardcode or get user input).  Create boolean variables that meet the following criteria
+
+ - `isRotated`: Evaluates to `true` if the rectangles are 90 degrees rotated from each other, and is `false` otherwise.  This means the length of one is equal to the width of the other, and vice versa.
+ - `isCongruent`: Evaluates to `true` if the rectangles are equal to each other, or are rotated 90 degrees to each other.  Use both the `equals()` method from the `Rectangle` class as well as `isRotated` that you created earlier.
+ - `isSimilar`: Evaluates to `true` if either the rectangles are congruent, or if the ratio of the lengths of the rectangles are equal to the ratio of the widths.
+
+Print out all your booleans.
+
+## CodingBat
+Do the following on [CodingBat - Logic 1](https://codingbat.com/java/Logic-1)
+
+No if-statements are needed (don't worry if this causes your solution to be slightly inefficient).
+ - cigarParty
+ - squirrelPlay
+ - love6
+ - in1To10
 
 ## Sample Solutions
 ```java
-import java.util.Scanner;
-
 public class Main
 {
 	public static void main(String[] args)
 	{
-		// Problem 2
-		Scanner sc = new Scanner(System.in);
-		int numSide;
-		double sideLength;
-		RegularPolygon rp;
+		Rectangle r1 = new Rectangle(2, 4);
+		Rectangle r2 = new Rectangle(4, 2);
 
-		System.out.println("Enter number of sides:");
-		numSide = sc.nextInt();
-
-		System.out.println("Enter the side length:");
-		sideLength = sc.nextDouble();
-
-		rp = new RegularPolygon(numSide, sideLength);
-
-		System.out.println("Area with " + rp.getNumSides() + " sides: " + rp.getArea());
-		
-		rp.addSides(2);
-		System.out.println("Incrementing the number of sides by two");
-		
-		System.out.println("Area with " + rp.getNumSides() + " sides: " + rp.getArea());
+		boolean isRotated = (r1.getLength() == r2.getWidth()) && (r1.getWidth() == r2.getLength());
+		boolean isCongruent = isRotated || r1.equals(r2);
+		boolean isSimilar = isCongruent || (r1.getLength() / r2.getLength() == r1.getWidth() == r2.getWidth());
 	}
 }
 ```
