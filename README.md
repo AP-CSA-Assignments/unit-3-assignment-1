@@ -1,4 +1,4 @@
-# unit-2-6-assignment
+# unit-3-assignment-1
 
 ## API and Documentation
 Documentation for the shape classes can be found [here](https://coderunner.projectstem.org/docs/shapes/index.html).
